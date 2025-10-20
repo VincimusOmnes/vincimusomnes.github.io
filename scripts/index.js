@@ -1,3 +1,5 @@
+import { markdownToHtml } from './markdown.js';
+
 const getFile = async (filePath) => {
     try {
         const response = await fetch(filePath);
@@ -52,26 +54,6 @@ const displayPost = (html) => {
     document.body.appendChild(postContainer);
 }
 
-const markdownToHtml = (markdown, path) => {
-    let html = markdown;
-    // This needs to be escaped if open to untrusted input
-    html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>')
-    html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
-    html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
-    html = html.replace(/^#### (.*$)/gim, '<h4>$1</h4>');
-    html = html.replace(/^##### (.*$)/gim, '<h5>$1</h5>');
-    html = html.replace(/^###### (.*$)/gim, '<h6>$1</h6>');
-    // ![Alt text](url "a title")
-    const imgReg = /!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]+)")?\)/g;
-    html = html.replace(imgReg, `<img src="posts/${path}/images/$2" alt="$1" title="$3">`);
-    // Links
-    // Text styles
-    // Syntax highlighting
-    // Tables
-    // Lists
-    // Escape characters
-    
-    return html;
-}
+
 
 displayAllPosts()
