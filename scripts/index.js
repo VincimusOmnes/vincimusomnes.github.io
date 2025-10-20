@@ -1,5 +1,9 @@
 import { markdownToHtml } from './markdown.js';
 
+const postsContainer = document.createElement('div');
+postsContainer.className = 'posts-container';
+document.body.appendChild(postsContainer);
+
 const getFile = async (filePath) => {
     try {
         const response = await fetch(filePath);
@@ -34,6 +38,11 @@ const getFile = async (filePath) => {
 
 console.log("JavaScript is working!");
 
+// There's a tradeoff for posts here, either
+// put them into published-posts in reverse order
+// order them reversed by number
+// or order them by date
+// Simplest is to have them reverse order in published-posts.json
 const displayAllPosts = () => {
     getFile('posts/published-posts.json').then(data => {
         const publishedPosts = JSON.parse(data)["published-posts"];
@@ -51,7 +60,7 @@ const displayPost = (html) => {
     const postContainer = document.createElement('div');
     postContainer.className = 'post';
     postContainer.innerHTML = html;
-    document.body.appendChild(postContainer);
+    postsContainer.appendChild(postContainer);
 }
 
 

@@ -1,0 +1,20 @@
+html {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+    background-color: #111 ;
+    color: #c9c9c9;
+}
+
+img {
+    max-width: 800px;
+    width: 100%;
+    display: block;
+}
+
+.posts-container {
+    max-width: 800px;
+    display: block;
+    margin: 0 auto;
+    gap: 40px;
+}

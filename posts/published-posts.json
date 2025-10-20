@@ -1,5 +1,6 @@
 {
 "published-posts": [
+    {"path": "002-sts-background-particles-godot"},
     {"path": "001-test-post"}
 ]
 }
